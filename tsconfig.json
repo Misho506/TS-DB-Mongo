@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist"
+  },
+  "lib": ["es2020"],
+  "include": ["./app/**/*.ts", "./dist/**/*.js", ".eslintrc.js", ".sequelizerc"]
+}

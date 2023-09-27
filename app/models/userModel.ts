@@ -13,10 +13,6 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, 'Please add a password']
-  },
-  hobbies: {
-    type: Array<String>,
-    required: [true, 'Please add a hobbie']
   }
 }, {
   timestamps: true

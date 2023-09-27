@@ -11,12 +11,12 @@ const planetSchema = new mongoose.Schema({
     unique: true
   },
   hasRings: {
-    type: String,
+    type: Boolean,
     required: [true, 'Please add a password']
   },
   mainAtmosphere: {
     type: Array<String> || null,
-    required: [true, 'Please add a hobbie']
+    required: [false]
   },
   surfaceTemperatureCelsius: {
     type: {
@@ -33,4 +33,4 @@ const planetSchema = new mongoose.Schema({
 
 export default mongoose.model('PLANETS', planetSchema);
 // mongoose.model('<name of collection>', schema);
-// <name of collection> ignore case, can be upper or Lower case.
+// <name of collection> ignore upper/lower case, can be upper or Lower case.

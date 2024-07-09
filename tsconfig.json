@@ -5,8 +5,16 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "sourceMap": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "strict": true,
   },
-  "lib": ["es2020"],
-  "include": ["./app/**/*.ts", "./dist/**/*.js", ".eslintrc.js", ".sequelizerc"]
+  "lib": [
+    "es2020"
+  ],
+  "include": [
+    "./app/**/*.ts",
+    "./dist/**/*.js",
+    ".eslintrc.js",
+    ".sequelizerc"
+  ]
 }

@@ -2,7 +2,7 @@ import asyncHandler from 'express-async-handler';
 import Planet from '../models/planetModel';
 import { SurfaceTemperatureCelsiusDB } from '../types/interfaces';
 
-const getGuidesOfPlanets = asyncHandler(async (req: any, res) => {
+const getGuidesOfPlanetsByUserId = asyncHandler(async (req: any, res) => {
   const { userId } = req.body
   try {
     const planets: Array<SurfaceTemperatureCelsiusDB> = await Planet.find({ userId })
@@ -14,5 +14,5 @@ const getGuidesOfPlanets = asyncHandler(async (req: any, res) => {
 })
 
 export {
-  getGuidesOfPlanets,
+  getGuidesOfPlanetsByUserId,
 }

@@ -12,7 +12,7 @@ app.use(bodyParse.json())
 
 app.use(express.json());
 app.use('/api/users', require('./routes/userRoutes'))
-app.use('/api/planets_news', require('./routes/planetRoutes'))
-// app.use(express.urlencoded({ extended: false })) //Middleware
+app.use('/api/planets', require('./routes/planetRoutes'))
+app.use(express.urlencoded({ extended: false })) //Middleware
 
 app.listen(port, () => console.log(`Server started on port ${port}`));

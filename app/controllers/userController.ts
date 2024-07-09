@@ -5,9 +5,6 @@ import jwt from 'jsonwebtoken';
 import { UserDB } from '../types/interfaces';
 
 
-// @desc  Register new user
-// @route POST /api/users/register
-// @access Public
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -47,22 +44,29 @@ const registerUser = asyncHandler(async (req, res) => {
   res.status(200).json({ message: 'Register User' });
 });
 
-// @desc  Get user data
-// @route GET /api/users/me
-// @access Public
+const updateUser = asyncHandler(async (req: any, res) => {
+  const { email, id } = req.user;
+  let updatedUser: UserDB = await User.findOne({ email });
+  updatedUser = {
+    name: '',
+    ...updatedUser
+  };
+  try {
+    const user: UserDB = await User.findByIdAndUpdate(id, updatedUser);
+    res.status(200).json(user as unknown as UserDB);
+  } catch (error) {
+    res.status(401).json("Can't update the user information");
+  }
+});
+
 const getMe = asyncHandler(async (req: any, res) => {
   res.status(200).json(req.user as unknown as UserDB);
 });
 
-// @desc  Authenticate an user
-// @route POST /api/users/login
-// @access Public
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-
   // Check for user email
   const user: UserDB = await User.findOne({ email });
-
   if (user && (await bcrypt.compare(password, user.password))) {
     res.status(201).json({
       _id: user.id,
@@ -72,7 +76,7 @@ const loginUser = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(400);
-    throw new Error('Invalid credentials');
+    throw new Error(`Invalid credentials "PASS" ${JSON.stringify(req.body)}`);
   }
 });
 
@@ -82,6 +86,7 @@ const generateToken = (id: string) => {
 }
 
 export {
+  updateUser,
   registerUser,
   getMe,
   loginUser,

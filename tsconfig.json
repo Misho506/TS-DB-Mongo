@@ -1,12 +1,20 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2017",
     "module": "commonjs",
     "esModuleInterop": true,
     "moduleResolution": "node",
     "sourceMap": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "strict": true,
   },
-  "lib": ["es2020"],
-  "include": ["./app/**/*.ts", "./dist/**/*.js", ".eslintrc.js", ".sequelizerc"]
+  "lib": [
+    "es2020"
+  ],
+  "include": [
+    "./app/**/*.ts",
+    "./dist/**/*.js",
+    ".eslintrc.js",
+    ".sequelizerc"
+  ]
 }
